@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.harsh.examples</groupId>
+  <artifactId>Handson</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Handson</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+     <dependency>
+      <groupId>my_mathe</groupId>
+      <artifactId>MyDependency</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.20</version>
+    </dependency>
+   
+  </dependencies>
+<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>VM-DevOps-Pract-releases</name>
+        <url>http://localhost:8081/artifactory/my-maven-demo1</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>VM-DevOps-Pract-snapshots</name>
+        <url>http://localhost:8081/artifactory/my-maven-demo1</url>
+    </snapshotRepository>
+</distributionManagement>
+<!-- ... -->
+<!-- ... -->
+<build>
+<plugins>
+    <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>3.1.0</version>
+    <configuration>
+        <archive>
+        <manifest>
+            <addClasspath>true</addClasspath>
+            <mainClass>com.harsh.examples.App</mainClass>
+        </manifest>
+        </archive>
+    </configuration>
+    </plugin>
+    <!-- Add the assemble plugin with standard configuration -->
+    <plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <configuration>
+        <archive>
+        <manifest>
+            <mainClass>com.harsh.examples.App</mainClass>
+        </manifest>
+        </archive>
+        <descriptorRefs>
+        <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+    </configuration>
+    </plugin>
+</plugins>
+<!-- ... -->
+</build>
+<!-- ... -->
+
+
+
+</project>
